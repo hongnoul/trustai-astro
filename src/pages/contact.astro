@@ -3,38 +3,63 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Contact | TrustAI" description="Get in touch with the TrustAI team">
-  <div class="w-full min-h-screen bg-white py-20 px-4">
-    <div class="max-w-2xl mx-auto">
-      <h1 class="text-5xl font-bold text-gray-900 mb-4">Contact Us</h1>
-      <p class="text-xl text-gray-600 mb-12">This is a placeholder contact page for testing page animations.</p>
-      
-      <div class="bg-white rounded-lg shadow-lg p-8">
-        <form>
-          <div class="mb-6">
-            <label class="block text-gray-700 font-semibold mb-2" for="name">
-              Name
-            </label>
-            <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" type="text" id="name" placeholder="Your name" />
+  <!-- Background fire video -->
+  <video
+    src="/fire.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    class="absolute bottom-10 left-80 w-64 pointer-events-none invert z-1"
+  />
+
+  <div class="w-full min-h-screen bg-white mt-24 relative">
+    <div class="mx-auto max-w-5xl">
+      <div class="flex flex-col md:flex-row">
+        <!-- Left container -->
+        <div class="md:w-1/2 relative">
+          <h1 class="absolute text-9xl font-bold text-black z-2">
+            Get in Touch.
+          </h1>
+        </div>
+
+        <!-- Right container -->
+        <div class="md:w-1/2">
+          <div class="bg-white pt-18">
+            <form class="space-y-6">
+              <input
+                id="name"
+                type="text"
+                placeholder="Your name *"
+                class="w-full px-4 py-2 border-b border-gray-300 focus:outline-none focus:border-black"
+              />
+
+              <input
+                id="email"
+                type="email"
+                placeholder="Email *"
+                class="w-full px-4 py-2 border-b border-gray-300 focus:outline-none focus:border-black"
+              />
+
+              <textarea
+                id="message"
+                placeholder="Your message"
+                class="w-full h-32 px-4 py-2 border-b border-gray-300 focus:outline-none focus:border-black"
+              />
+
+              <button
+                type="submit"
+                class="group flex items-center justify-between w-full rounded-full bg-black px-6 py-3 text-white font-medium hover:cursor-pointer transition"
+              >
+                <span class="transition-all duration-200 group-hover:text-[1.1em] group-hover:tracking-tight">
+                  Submit
+                </span>
+                <span class="flex h-3 w-3 items-center justify-center rounded-full bg-white transition group-hover:scale-110"></span>
+              </button>
+
+            </form>
           </div>
-          
-          <div class="mb-6">
-            <label class="block text-gray-700 font-semibold mb-2" for="email">
-              Email
-            </label>
-            <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" type="email" id="email" placeholder="your@email.com" />
-          </div>
-          
-          <div class="mb-6">
-            <label class="block text-gray-700 font-semibold mb-2" for="message">
-              Message
-            </label>
-            <textarea class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 h-32" id="message" placeholder="Your message here..."></textarea>
-          </div>
-          
-          <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition duration-200" type="submit">
-            Send Message
-          </button>
-        </form>
+        </div>
       </div>
     </div>
   </div>
