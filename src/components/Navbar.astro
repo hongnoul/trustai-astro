@@ -1,18 +1,16 @@
 ---
 const NAV = [
-  { href: "#services", label: "Services" },
-  { href: "#careers", label: "Careers" },
-  { href: "#mission-configurator", label: "Mission Configurator" },
+  { href: "/#services", label: "Services" },
+  { href: "/#careers", label: "Careers" },
+  { href: "/#mission-configurator", label: "Mission Configurator" },
   { href: "/contact", label: "Contact" },
 ];
 ---
 
 <header class="sticky top-0 z-50 bg-white">
   <div class="relative flex items-center px-8 h-18">
-    <!-- Invisible left flex element -->
     <div class="invisible flex-1"></div>
 
-    <!-- Links: shrink with viewport, then disappear under sm -->
     <nav
       class="
         hidden md:flex items-center
@@ -22,6 +20,7 @@ const NAV = [
       {NAV.map((i) => (
         <a
           href={i.href}
+          data-transition
           class="
             flex items-center font-semibold text-black hover:text-black
             [font-size:clamp(13px,1.1vw,13px)]
@@ -34,21 +33,17 @@ const NAV = [
       ))}
     </nav>
 
-    <!-- Invisible right flex element -->
     <div class="invisible flex-1"></div>
 
-    <!-- Absolutely positioned logo (UNCHANGED) -->
     <a
       href="/"
+      data-transition
       aria-label="Home"
       class="absolute left-8 top-1/2 transform -translate-y-1/2 inline-flex items-center font-inter font-bold"
     >
       <img src="/trust.svg" alt="Logo" width="48" height="48" class="h-10 w-10" />
     </a>
 
-    <!-- Absolutely positioned right icon (UNCHANGED placement)
-         Mobile: clickable
-         Desktop: no interaction -->
     <button
       id="menuBtn"
       type="button"
@@ -72,7 +67,6 @@ const NAV = [
     </button>
   </div>
 
-  <!-- Mobile menu overlay (only exists on mobile) -->
   <div
     id="mobileMenu"
     class="fixed inset-0 z-[60] hidden bg-white md:hidden"
@@ -81,13 +75,12 @@ const NAV = [
     aria-label="Mobile navigation"
   >
     <div class="relative h-full w-full px-8">
-      <!-- Keep top bar spacing aligned with your absolute elements -->
       <div class="h-18"></div>
 
       <nav class="flex h-[calc(100%-72px)] flex-col items-center justify-center text-center">
         <div class="flex flex-col gap-3">
           {NAV.map((i) => (
-            <a href={i.href} class="text-4xl font-bold leading-tight">
+            <a href={i.href} data-transition class="text-4xl font-bold leading-tight">
               {i.label}
             </a>
           ))}
@@ -115,28 +108,59 @@ const NAV = [
     };
 
     btn?.addEventListener("click", () => {
-      // Desktop: do nothing
       if (!isMobile()) return;
-
-      // Mobile: toggle
       if (menu?.classList.contains("hidden")) openMenu();
       else closeMenu();
     });
 
-    // Close when clicking a link
     menu?.addEventListener("click", (e) => {
       const a = e.target?.closest?.("a");
       if (a) closeMenu();
     });
 
-    // Close on Escape
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeMenu();
     });
 
-    // If resized up to desktop, force close
     window.addEventListener("resize", () => {
       if (!isMobile()) closeMenu();
     });
+
+    // ---- Transition-aware navigation ----
+    const isSamePageHashOnly = (href) => href && href.startsWith("#");
+
+    const isExternal = (href) => {
+      try {
+        const u = new URL(href, window.location.href);
+        return u.origin !== window.location.origin;
+      } catch {
+        return false;
+      }
+    };
+
+    document.addEventListener("click", (e) => {
+      const a = e.target?.closest?.("a[data-transition]");
+      if (!a) return;
+
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      if (a.target === "_blank") return;
+
+      const href = a.getAttribute("href");
+      if (!href) return;
+
+      // only skip animation for SAME-PAGE anchor jumps like "#careers"
+      if (isSamePageHashOnly(href)) return;
+
+      if (isExternal(href)) return;
+
+      e.preventDefault();
+
+      if (typeof window.__coverThenNavigate === "function") {
+        window.__coverThenNavigate(href);
+      } else {
+        window.location.href = href;
+      }
+    });
   </script>
+
 </header>

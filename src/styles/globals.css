@@ -27,10 +27,10 @@ body {
 /* Page content fades in as black screen exits */
 @keyframes pageContentFadeIn {
   0% {
-    opacity: 0;
+    opacity: 0.0;
   }
-  50% {
-    opacity: 0;
+  60% {
+    opacity: 0.0;
   }
   100% {
     opacity: 1;
@@ -38,5 +38,5 @@ body {
 }
 
 .page-fade-in {
-  animation: pageContentFadeIn 1.5s ease-in-out forwards;
+  animation: pageContentFadeIn 1s cubic-bezier(0.1, 0, 0.2, 0) forwards;
 }
