@@ -1,0 +1,49 @@
+---
+const NAV = [
+  { href: "#services", label: "Services" },
+  { href: "#careers", label: "Careers" },
+  { href: "#mission-configurator", label: "Mission Configurator" },
+  { href: "contact", label: "Contact" },
+];
+---
+
+<header class="sticky top-0 z-50 bg-white">
+  <div class="relative flex items-center gap-54 px-8 h-18">
+    <!-- Invisible left flex element -->
+    <div class="invisible flex-1"></div>
+
+    <!-- Links: flex items -->
+    {NAV.map((i) => (
+      <a
+        href={i.href}
+        class="flex items-center text-[13px] font-bold text-black hover:text-black"
+      >
+        {i.label}
+      </a>
+    ))}
+
+    <!-- Invisible right flex element -->
+    <div class="invisible flex-1"></div>
+
+    <!-- Absolutely positioned logo -->
+    <a href="/" aria-label="Home" class="absolute left-8 top-1/2 transform -translate-y-1/2 inline-flex items-center font-inter font-bold">
+      <img src="/trust.svg" alt="Logo" width="48" height="48" class="h-10 w-10" />
+    </a>
+
+    <!-- Absolutely positioned right icon -->
+    <button
+      type="button"
+      aria-label="Menu"
+      class="absolute right-8 top-1/2 transform -translate-y-1/2 inline-flex items-center justify-end font-inter font-bold"
+    >
+      <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true">
+        <path
+          d="M0 24H48M0 32H48"
+          stroke="black"
+          stroke-width="1.5"
+          stroke-linecap="square"
+        />
+      </svg>
+    </button>
+  </div>
+</header>

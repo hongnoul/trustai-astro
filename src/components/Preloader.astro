@@ -1,0 +1,20 @@
+---
+// Full-screen preloader that slides in from bottom and out to top
+---
+
+<div id="preloader" class="fixed inset-0 bg-black z-1000" style="animation: preloaderSlide 1.5s ease-in-out forwards;"></div>
+
+<script>
+  // The preloader animation runs independently
+  // The page content will fade in via the .page-fade-in class
+  const preloader = document.getElementById('preloader');
+  
+  if (preloader) {
+    // After animation completes, hide the preloader
+    setTimeout(() => {
+      preloader.style.opacity = '0';
+      preloader.style.pointerEvents = 'none';
+      preloader.style.visibility = 'hidden';
+    }, 1500);
+  }
+</script>

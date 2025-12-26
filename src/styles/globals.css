@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Preloader animation: slides in from bottom, then out to top */
+@keyframes preloaderSlide {
+  0% {
+    transform: translateY(100%);
+  }
+  35% {
+    transform: translateY(0);
+  }
+  65% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+/* Page content fades in as black screen exits */
+@keyframes pageContentFadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.page-fade-in {
+  animation: pageContentFadeIn 1.5s ease-in-out forwards;
+}

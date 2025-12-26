@@ -1,0 +1,24 @@
+---
+// Black component covering viewport minus navbar height
+---
+
+<div id="hero" class="bg-black rounded-bl-3xl rounded-br-3xl mr-1 ml-1 overflow-hidden box-border transition-transform duration-300 relative" style="height: calc(100vh - 4.75rem); box-sizing: border-box; transform-origin: center;">
+  <!-- Video background -->
+  <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop>
+    <source src="/hero.mp4" type="video/mp4">
+  </video>
+  
+  <!-- Top left content -->
+  <h1 class="absolute top-8 left-8 text-white font-bold z-10" style="font-size: 14rem; line-height: 1;">TRUST</h1>
+</div>
+
+<script>
+  const hero = document.getElementById('hero');
+  if (hero) {
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const scale = Math.max(0.5, 1 - scrollY / 20000);
+      hero.style.transform = `scale(${scale})`;
+    });
+  }
+</script>

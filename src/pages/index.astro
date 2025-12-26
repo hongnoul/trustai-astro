@@ -1,16 +1,45 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Home">
+  <div class="scroll-smooth">
+    <Hero />
+
+    <main class="px-8">
+      <section
+        id="services"
+        class="scroll-mt-24 py-24 border-t border-black/10"
+      >
+        <h2 class="text-3xl font-bold">Services</h2>
+        <p class="mt-4 text-black/70">
+          Placeholder content for Services section.
+        </p>
+        <div class="mt-10 h-[320px] w-full rounded-2xl bg-black/5"></div>
+      </section>
+
+      <section
+        id="careers"
+        class="scroll-mt-24 py-24 border-t border-black/10"
+      >
+        <h2 class="text-3xl font-bold">Careers</h2>
+        <p class="mt-4 text-black/70">
+          Placeholder content for Careers section.
+        </p>
+        <div class="mt-10 h-[320px] w-full rounded-2xl bg-black/5"></div>
+      </section>
+
+      <section
+        id="mission-configurator"
+        class="scroll-mt-24 py-24 border-t border-black/10"
+      >
+        <h2 class="text-3xl font-bold">Mission Configurator</h2>
+        <p class="mt-4 text-black/70">
+          Placeholder content for Mission Configurator section.
+        </p>
+        <div class="mt-10 h-[320px] w-full rounded-2xl bg-black/5"></div>
+      </section>
+    </main>
+  </div>
+</BaseLayout>
