@@ -2,14 +2,30 @@
 /* Footer.astro */
 ---
 
-<footer class="w-full bg-white py-24 flex justify-center">
-  <img
-    src="/inline.svg"
-    alt="Footer"
-    width="1800"
-    height="320"
-    class="w-auto h-auto box-border px-64"
-    loading="eager"
-    decoding="async"
-  />
+<footer class="w-full bg-white py-36">
+  <!-- Shared width container -->
+  <div class="mx-auto box-border px-64">
+    <img
+      src="/inline.svg"
+      alt="Footer"
+      width="1800"
+      height="320"
+      class="w-auto h-auto"
+      loading="eager"
+      decoding="async"
+    />
+
+    <div class="mt-10 flex items-center justify-between text-xs text-black">
+      <div class="opacity-70">
+        © 2026 TrustAI. All rights reserved.
+      </div>
+
+      <a
+        href="mailto:contact@trytrust.ai"
+        class="font-medium underline underline-offset-4 hover:opacity-80"
+      >
+        contact@trytrust.ai
+      </a>
+    </div>
+  </div>
 </footer>
