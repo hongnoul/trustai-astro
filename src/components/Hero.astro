@@ -2,14 +2,19 @@
 // Black component covering viewport minus navbar height
 ---
 
-<div id="hero" class="bg-black rounded-bl-3xl rounded-br-3xl mr-1 ml-1 overflow-hidden box-border transition-transform duration-300 relative" style="height: calc(100vh - 4.75rem); box-sizing: border-box; transform-origin: center;">
+<div id="hero" class="bg-gray-500 rounded-bl-3xl rounded-br-3xl mr-1 ml-1 overflow-hidden box-border transition-transform duration-300 relative" style="height: calc(100vh - 4.75rem); box-sizing: border-box; transform-origin: center;">
   <!-- Video background -->
   <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop>
     <source src="/hero2.mp4" type="video/mp4">
   </video>
   
   <!-- Top left content -->
-  <h1 class="absolute top-8 left-8 text-white font-bold z-10" style="font-size: 12rem; line-height: 1;">TrustAI</h1>
+  <h1
+    class="absolute top-8 left-8 text-white font-bold z-10"
+    style="font-size: clamp(3.5rem, 18vw, 12rem); line-height: 1;"
+  >
+    TrustAI
+  </h1>
 </div>
 
 <script>

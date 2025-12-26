@@ -3,38 +3,63 @@ const NAV = [
   { href: "#services", label: "Services" },
   { href: "#careers", label: "Careers" },
   { href: "#mission-configurator", label: "Mission Configurator" },
-  { href: "contact", label: "Contact" },
+  { href: "/contact", label: "Contact" },
 ];
 ---
 
 <header class="sticky top-0 z-50 bg-white">
-  <div class="relative flex items-center gap-54 px-8 h-18">
+  <div class="relative flex items-center px-8 h-18">
     <!-- Invisible left flex element -->
     <div class="invisible flex-1"></div>
 
-    <!-- Links: flex items -->
-    {NAV.map((i) => (
-      <a
-        href={i.href}
-        class="flex items-center text-[13px] font-bold text-black hover:text-black"
-      >
-        {i.label}
-      </a>
-    ))}
+    <!-- Links: shrink with viewport, then disappear under sm -->
+    <nav
+      class="
+        hidden md:flex items-center
+        [gap:clamp(36px,18vw,216px)]
+      "
+    >
+      {NAV.map((i) => (
+        <a
+          href={i.href}
+          class="
+            flex items-center font-semibold text-black hover:text-black
+            [font-size:clamp(13px,1.1vw,13px)]
+            [letter-spacing:clamp(-0.02em,-0.01vw,0em)]
+            whitespace-nowrap
+          "
+        >
+          {i.label}
+        </a>
+      ))}
+    </nav>
 
     <!-- Invisible right flex element -->
     <div class="invisible flex-1"></div>
 
-    <!-- Absolutely positioned logo -->
-    <a href="/" aria-label="Home" class="absolute left-8 top-1/2 transform -translate-y-1/2 inline-flex items-center font-inter font-bold">
+    <!-- Absolutely positioned logo (UNCHANGED) -->
+    <a
+      href="/"
+      aria-label="Home"
+      class="absolute left-8 top-1/2 transform -translate-y-1/2 inline-flex items-center font-inter font-bold"
+    >
       <img src="/trust.svg" alt="Logo" width="48" height="48" class="h-10 w-10" />
     </a>
 
-    <!-- Absolutely positioned right icon -->
+    <!-- Absolutely positioned right icon (UNCHANGED placement)
+         Mobile: clickable
+         Desktop: no interaction -->
     <button
+      id="menuBtn"
       type="button"
       aria-label="Menu"
-      class="absolute right-8 top-1/2 transform -translate-y-1/2 inline-flex items-center justify-end font-inter font-bold"
+      aria-expanded="false"
+      class="
+        absolute right-8 top-1/2 transform -translate-y-1/2
+        inline-flex items-center justify-end font-inter font-bold
+        pointer-events-auto
+        md:pointer-events-none
+      "
     >
       <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true">
         <path
@@ -46,4 +71,72 @@ const NAV = [
       </svg>
     </button>
   </div>
+
+  <!-- Mobile menu overlay (only exists on mobile) -->
+  <div
+    id="mobileMenu"
+    class="fixed inset-0 z-[60] hidden bg-white md:hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Mobile navigation"
+  >
+    <div class="relative h-full w-full px-8">
+      <!-- Keep top bar spacing aligned with your absolute elements -->
+      <div class="h-18"></div>
+
+      <nav class="flex h-[calc(100%-72px)] flex-col items-center justify-center text-center">
+        <div class="flex flex-col gap-3">
+          {NAV.map((i) => (
+            <a href={i.href} class="text-4xl font-bold leading-tight">
+              {i.label}
+            </a>
+          ))}
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <script is:inline>
+    const btn = document.getElementById("menuBtn");
+    const menu = document.getElementById("mobileMenu");
+
+    const isMobile = () => window.matchMedia("(max-width: 1600px)").matches;
+
+    const openMenu = () => {
+      menu?.classList.remove("hidden");
+      btn?.setAttribute("aria-expanded", "true");
+      document.documentElement.style.overflow = "hidden";
+    };
+
+    const closeMenu = () => {
+      menu?.classList.add("hidden");
+      btn?.setAttribute("aria-expanded", "false");
+      document.documentElement.style.overflow = "";
+    };
+
+    btn?.addEventListener("click", () => {
+      // Desktop: do nothing
+      if (!isMobile()) return;
+
+      // Mobile: toggle
+      if (menu?.classList.contains("hidden")) openMenu();
+      else closeMenu();
+    });
+
+    // Close when clicking a link
+    menu?.addEventListener("click", (e) => {
+      const a = e.target?.closest?.("a");
+      if (a) closeMenu();
+    });
+
+    // Close on Escape
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+
+    // If resized up to desktop, force close
+    window.addEventListener("resize", () => {
+      if (!isMobile()) closeMenu();
+    });
+  </script>
 </header>
