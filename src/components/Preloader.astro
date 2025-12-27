@@ -2,16 +2,21 @@
 // Full-screen preloader that slides in from bottom and out to top
 ---
 
-<div id="preloader" class="fixed inset-0 bg-black z-1000" style="animation: preloaderSlide 1s cubic-bezier(0.1, 0, 0.2, 0) forwards;"></div>
+<div
+  id="preloader"
+  class="fixed inset-0 bg-black z-1000"
+  style="animation: preloaderSlide 1s cubic-bezier(0.1, 0, 0.2, 0) forwards;"
+>
+</div>
 
 <script>
-  const preloader = document.getElementById('preloader');
-  
+  const preloader = document.getElementById("preloader");
+
   if (preloader) {
     setTimeout(() => {
-      preloader.style.opacity = '0';
-      preloader.style.pointerEvents = 'none';
-      preloader.style.visibility = 'hidden';
+      preloader.style.opacity = "0";
+      preloader.style.pointerEvents = "none";
+      preloader.style.visibility = "hidden";
     }, 1500);
   }
 </script>
