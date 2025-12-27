@@ -1,0 +1,158 @@
+---
+
+---
+
+<div class="bg-white py-6 overflow-hidden">
+    <div class="logo-carousel-container">
+        <div class="logo-carousel flex gap-16 items-center">
+            <!-- Set 1 -->
+            <img
+                src="/carousel/mit.svg"
+                alt="MIT"
+                class="h-10 w-auto flex-shrink-0"
+            />
+            <img
+                src="/carousel/virtu.svg"
+                alt="Virtu"
+                class="h-10 w-auto flex-shrink-0"
+            />
+            <img
+                src="/carousel/lumos.svg"
+                alt="Lumos"
+                class="h-10 w-auto flex-shrink-0"
+            />
+            <img
+                src="/carousel/worldbank.svg"
+                alt="World Bank"
+                class="h-8 w-auto flex-shrink-0"
+            />
+            <img
+                src="/carousel/pisa.svg"
+                alt="Pisa"
+                class="h-10 w-auto flex-shrink-0"
+            />
+            <img
+                src="/carousel/mckinsey.svg"
+                alt="McKinsey"
+                class="h-10 w-auto flex-shrink-0"
+            />
+            <img
+                src="/carousel/kaist.svg"
+                alt="KAIST"
+                class="h-10 w-auto flex-shrink-0"
+            />
+
+            <!-- Set 2 -->
+            <img
+                src="/carousel/mit.svg"
+                alt="MIT"
+                class="h-10 w-auto flex-shrink-0"
+            />
+            <img
+                src="/carousel/virtu.svg"
+                alt="Virtu"
+                class="h-10 w-auto flex-shrink-0"
+            />
+            <img
+                src="/carousel/lumos.svg"
+                alt="Lumos"
+                class="h-10 w-auto flex-shrink-0"
+            />
+            <img
+                src="/carousel/worldbank.svg"
+                alt="World Bank"
+                class="h-8 w-auto flex-shrink-0"
+            />
+            <img
+                src="/carousel/pisa.svg"
+                alt="Pisa"
+                class="h-10 w-auto flex-shrink-0"
+            />
+            <img
+                src="/carousel/mckinsey.svg"
+                alt="McKinsey"
+                class="h-10 w-auto flex-shrink-0"
+            />
+            <img
+                src="/carousel/kaist.svg"
+                alt="KAIST"
+                class="h-10 w-auto flex-shrink-0"
+            />
+
+            <!-- Set 3 -->
+            <img
+                src="/carousel/mit.svg"
+                alt="MIT"
+                class="h-10 w-auto flex-shrink-0"
+            />
+            <img
+                src="/carousel/virtu.svg"
+                alt="Virtu"
+                class="h-10 w-auto flex-shrink-0"
+            />
+            <img
+                src="/carousel/lumos.svg"
+                alt="Lumos"
+                class="h-10 w-auto flex-shrink-0"
+            />
+            <img
+                src="/carousel/worldbank.svg"
+                alt="World Bank"
+                class="h-8 w-auto flex-shrink-0"
+            />
+            <img
+                src="/carousel/pisa.svg"
+                alt="Pisa"
+                class="h-10 w-auto flex-shrink-0"
+            />
+            <img
+                src="/carousel/mckinsey.svg"
+                alt="McKinsey"
+                class="h-10 w-auto flex-shrink-0"
+            />
+            <img
+                src="/carousel/kaist.svg"
+                alt="KAIST"
+                class="h-10 w-auto flex-shrink-0"
+            />
+
+            <!-- Spacer to ensure the gap after KAIST is counted in the total width calculation -->
+            <div class="w-16 h-1 flex-shrink-0"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes scroll {
+        0% {
+            transform: translate3d(0, 0, 0);
+        }
+        100% {
+            transform: translate3d(-33.333%, 0, 0);
+        }
+    }
+
+    .logo-carousel-container {
+        width: 100%;
+        mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 15%,
+            black 85%,
+            transparent
+        );
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 15%,
+            black 85%,
+            transparent
+        );
+    }
+
+    .logo-carousel {
+        animation: scroll 30s linear infinite;
+        width: max-content;
+        will-change: transform;
+    }
+</style>

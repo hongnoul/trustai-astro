@@ -1,8 +1,8 @@
 ---
 const NAV = [
-  { href: "/#services", label: "Services" },
-  { href: "/#careers", label: "Careers" },
-  { href: "/#mission-configurator", label: "Mission Configurator" },
+  { href: "/#visions", label: "Visions" },
+  { href: "/#company", label: "Company" },
+  { href: "/#newsletters", label: "Newsletters" },
   { href: "/contact", label: "Contact" },
 ];
 ---
@@ -12,25 +12,25 @@ const NAV = [
     <div class="invisible flex-1"></div>
 
     <nav
-      class="
-        hidden md:flex items-center
-        [gap:clamp(36px,18vw,216px)]
-      "
+      class="hidden md:flex items-center
+        [gap:clamp(36px,18vw,216px)]"
     >
-      {NAV.map((i) => (
-        <a
-          href={i.href}
-          data-transition
-          class="
+      {
+        NAV.map((i) => (
+          <a
+            href={i.href}
+            data-transition
+            class="
             flex items-center font-semibold text-black hover:text-black
             [font-size:clamp(13px,1.1vw,13px)]
             [letter-spacing:clamp(-0.02em,-0.01vw,0em)]
             whitespace-nowrap
           "
-        >
-          {i.label}
-        </a>
-      ))}
+          >
+            {i.label}
+          </a>
+        ))
+      }
     </nav>
 
     <div class="invisible flex-1"></div>
@@ -41,7 +41,13 @@ const NAV = [
       aria-label="Home"
       class="absolute left-8 top-1/2 transform -translate-y-1/2 inline-flex items-center font-inter font-bold"
     >
-      <img src="/trust.svg" alt="Logo" width="48" height="48" class="h-10 w-10" />
+      <img
+        src="/trust.svg"
+        alt="Logo"
+        width="48"
+        height="48"
+        class="h-10 w-10"
+      />
     </a>
 
     <button
@@ -49,20 +55,17 @@ const NAV = [
       type="button"
       aria-label="Menu"
       aria-expanded="false"
-      class="
-        absolute right-8 top-1/2 transform -translate-y-1/2
+      class="absolute right-8 top-1/2 transform -translate-y-1/2
         inline-flex items-center justify-end font-inter font-bold
         pointer-events-auto
-        md:pointer-events-none
-      "
+        md:pointer-events-none"
     >
       <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true">
         <path
           d="M0 24H48M0 32H48"
           stroke="black"
           stroke-width="1.5"
-          stroke-linecap="square"
-        />
+          stroke-linecap="square"></path>
       </svg>
     </button>
   </div>
@@ -77,13 +80,21 @@ const NAV = [
     <div class="relative h-full w-full px-8">
       <div class="h-18"></div>
 
-      <nav class="flex h-[calc(100%-72px)] flex-col items-center justify-center text-center">
+      <nav
+        class="flex h-[calc(100%-72px)] flex-col items-center justify-center text-center"
+      >
         <div class="flex flex-col gap-3">
-          {NAV.map((i) => (
-            <a href={i.href} data-transition class="text-4xl font-bold leading-tight">
-              {i.label}
-            </a>
-          ))}
+          {
+            NAV.map((i) => (
+              <a
+                href={i.href}
+                data-transition
+                class="text-4xl font-bold leading-tight"
+              >
+                {i.label}
+              </a>
+            ))
+          }
         </div>
       </nav>
     </div>
@@ -162,5 +173,4 @@ const NAV = [
       }
     });
   </script>
-
 </header>
