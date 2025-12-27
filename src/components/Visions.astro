@@ -1,0 +1,57 @@
+---
+const visions = [
+    {
+        title: "Universal Trust",
+        description:
+            "Building the mathematical protocols that allow AI systems to work together safely and verifiably.",
+    },
+    {
+        title: "Safety Layers",
+        description:
+            "Creating independent infrastructure that monitors and aligns AI behavior in real-time.",
+    },
+    {
+        title: "Transparent Logic",
+        description:
+            "Moving from black-box systems to clear, auditable reasoning that can be verified by humans.",
+    },
+];
+---
+
+<section
+    id="visions"
+    class="reveal scroll-mt-24 py-24"
+    style="--reveal-delay: 0ms;"
+>
+    <div class="flex flex-col gap-12">
+        <div class="text-center">
+            <h2
+                class="text-4xl font-bold tracking-tight text-black sm:text-5xl"
+            >
+                Visions
+            </h2>
+            <p class="mt-4 text-xl text-black/60 max-w-2xl mx-auto">
+                The architectural foundations for a safe, superintelligent
+                future.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {
+                visions.map((vision) => (
+                    <div class="group relative p-8 rounded-3xl bg-neutral-50 border border-black/5 transition-all duration-500 overflow-hidden">
+                        <div class="relative z-10 h-full flex flex-col">
+                            <h3 class="text-2xl font-bold text-black mb-4">
+                                {vision.title}
+                            </h3>
+
+                            <p class="text-black/60 leading-relaxed text-lg">
+                                {vision.description}
+                            </p>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
