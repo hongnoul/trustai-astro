@@ -29,8 +29,8 @@
         roomEnvironment.dispose();
 
         const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-        camera.position.set(0, 0.6, 0);
-        camera.lookAt(0, 0.55, 0);
+        camera.position.set(0, 0.3, 0);
+        camera.lookAt(0, 0, 0);
 
         // const light1 = new THREE.DirectionalLight(0xffffff, 3.0);
         // light1.position.set(5, 5, 5);
@@ -47,7 +47,7 @@
             color: 0x3a51a3,
             metalness: 0.1,
             roughness: 1,
-            transmission: 0,
+            transmission: 7,
             thickness: 1,
             envMapIntensity: 1,
             clearcoat: 1.0,
@@ -62,9 +62,9 @@
         });
 
         const pivotGroup = new THREE.Group();
-        pivotGroup.position.x = 0.3;
+        pivotGroup.position.x = 0.2;
         pivotGroup.position.y = -100;
-        pivotGroup.rotation.x = -0.6;
+        pivotGroup.rotation.x = -1.1;
         scene.add(pivotGroup);
 
         const loader = new FBXLoader();
@@ -80,7 +80,7 @@
                     }
                 });
 
-                object.scale.set(0.52, 0.52, 0.52);
+                object.scale.set(0.3, 0.4, 0.3);
                 object.rotation.z = Math.PI;
 
                 const box = new THREE.Box3().setFromObject(object);
@@ -120,8 +120,8 @@
 
             const time = clock.getElapsedTime();
 
-            pivotGroup.rotation.y = time * 0.05;
-            pivotGroup.position.y = Math.sin(time * 0.5) * 0;
+            pivotGroup.rotation.y = time * 0.02;
+            pivotGroup.position.y = Math.sin(time * 0.01) * 0;
 
             renderer.render(scene, camera);
         }
