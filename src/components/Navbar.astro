@@ -39,15 +39,25 @@ const NAV = [
       href="/"
       data-transition
       aria-label="Home"
-      class="absolute left-8 top-1/2 transform -translate-y-1/2 inline-flex items-center font-inter font-bold"
+      class="absolute left-8 top-1/2 transform -translate-y-1/2 inline-flex items-center font-inter font-bold logo-link"
     >
-      <img
-        src="/trust.svg"
-        alt="Logo"
-        width="48"
-        height="48"
-        class="h-10 w-10"
-      />
+      <span class="logo-swap" aria-hidden="true">
+        <img
+          src="/trust.svg"
+          alt="Logo"
+          width="48"
+          height="48"
+          class="logo-img logo-img--base"
+        />
+        <img
+          src="/trust.svg"
+          alt=""
+          width="48"
+          height="48"
+          class="logo-img logo-img--hover"
+          aria-hidden="true"
+        />
+      </span>
     </a>
 
     <button
@@ -122,11 +132,62 @@ const NAV = [
         transform 320ms ease;
     }
 
+    .logo-swap {
+      position: relative;
+      display: block;
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+    }
+
+    .logo-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 320ms ease;
+    }
+
+    .logo-img--base {
+      transform: translateY(0);
+    }
+
+    .logo-img--hover {
+      filter: brightness(0) saturate(100%);
+      opacity: 0;
+      mask-image: linear-gradient(to top, black 60%, transparent 100%);
+      mask-size: 100% 200%;
+      mask-position: 0 100%;
+      -webkit-mask-image: linear-gradient(to top, black 60%, transparent 100%);
+      -webkit-mask-size: 100% 200%;
+      -webkit-mask-position: 0 100%;
+      transition:
+        opacity 200ms ease,
+        mask-position 360ms ease,
+        -webkit-mask-position 360ms ease;
+    }
+
+    .logo-link:hover .logo-img--hover {
+      opacity: 1;
+      mask-position: 0 0;
+      -webkit-mask-position: 0 0;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .mobile-menu,
       .mobile-menu.is-open {
         transition: none;
         transform: none;
+      }
+
+      .logo-img {
+        transition: none;
+      }
+
+      .logo-img--hover {
+        opacity: 1;
+        mask-position: 0 0;
+        -webkit-mask-position: 0 0;
       }
     }
   </style>
