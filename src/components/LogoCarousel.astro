@@ -41,83 +41,61 @@
                 alt="KAIST"
                 class="h-10 w-auto flex-shrink-0"
             />
+            <img
+                src="/carousel/lincoln.svg"
+                alt="Lincoln"
+                class="h-10 w-auto flex-shrink-0"
+            />
 
-            <!-- Set 2 -->
+            <!-- Set 2 (duplicate for seamless loop) -->
             <img
                 src="/carousel/mit.svg"
-                alt="MIT"
+                alt=""
+                aria-hidden="true"
                 class="h-10 w-auto flex-shrink-0"
             />
             <img
                 src="/carousel/virtu.svg"
-                alt="Virtu"
+                alt=""
+                aria-hidden="true"
                 class="h-10 w-auto flex-shrink-0"
             />
             <img
                 src="/carousel/lumos.svg"
-                alt="Lumos"
+                alt=""
+                aria-hidden="true"
                 class="h-10 w-auto flex-shrink-0"
             />
             <img
                 src="/carousel/worldbank.svg"
-                alt="World Bank"
+                alt=""
+                aria-hidden="true"
                 class="h-8 w-auto flex-shrink-0"
             />
             <img
                 src="/carousel/pisa.svg"
-                alt="Pisa"
+                alt=""
+                aria-hidden="true"
                 class="h-10 w-auto flex-shrink-0"
             />
             <img
                 src="/carousel/mckinsey.svg"
-                alt="McKinsey"
+                alt=""
+                aria-hidden="true"
                 class="h-10 w-auto flex-shrink-0"
             />
             <img
                 src="/carousel/kaist.svg"
-                alt="KAIST"
-                class="h-10 w-auto flex-shrink-0"
-            />
-
-            <!-- Set 3 -->
-            <img
-                src="/carousel/mit.svg"
-                alt="MIT"
+                alt=""
+                aria-hidden="true"
                 class="h-10 w-auto flex-shrink-0"
             />
             <img
-                src="/carousel/virtu.svg"
-                alt="Virtu"
+                src="/carousel/lincoln.svg"
+                alt=""
+                aria-hidden="true"
                 class="h-10 w-auto flex-shrink-0"
             />
-            <img
-                src="/carousel/lumos.svg"
-                alt="Lumos"
-                class="h-10 w-auto flex-shrink-0"
-            />
-            <img
-                src="/carousel/worldbank.svg"
-                alt="World Bank"
-                class="h-8 w-auto flex-shrink-0"
-            />
-            <img
-                src="/carousel/pisa.svg"
-                alt="Pisa"
-                class="h-10 w-auto flex-shrink-0"
-            />
-            <img
-                src="/carousel/mckinsey.svg"
-                alt="McKinsey"
-                class="h-10 w-auto flex-shrink-0"
-            />
-            <img
-                src="/carousel/kaist.svg"
-                alt="KAIST"
-                class="h-10 w-auto flex-shrink-0"
-            />
-
-            <!-- Spacer to ensure the gap after KAIST is counted in the total width calculation -->
-            <div class="w-16 h-1 flex-shrink-0"></div>
         </div>
     </div>
 </div>
@@ -128,7 +106,7 @@
             transform: translate3d(0, 0, 0);
         }
         100% {
-            transform: translate3d(-33.333%, 0, 0);
+            transform: translate3d(-50%, 0, 0);
         }
     }
 
@@ -154,5 +132,11 @@
         animation: scroll 30s linear infinite;
         width: max-content;
         will-change: transform;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .logo-carousel {
+            animation: none;
+        }
     }
 </style>
